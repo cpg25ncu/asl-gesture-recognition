@@ -27,15 +27,7 @@
 
 ## 处理流程
 
-```mermaid
-flowchart LR
-    A[摄像头/视频<br/>OpenCV 采集] --> B[预处理<br/>可选去噪 /<br/>自适应 gamma]
-    B --> C[MediaPipe Hands<br/>21 个关键点<br/>跨帧追踪]
-    C --> D[特征归一化<br/>宽高比校正、手腕为原点、<br/>按手掌长度缩放]
-    D --> E[分类器<br/>逻辑回归 / kNN / 决策树]
-    E --> F[时序平滑<br/>最近 5 帧概率平均]
-    F --> G[画面标注<br/>字母、置信度、FPS]
-```
+<p align="center"><img src="reports/figures/pipeline.png" width="900" alt="处理流程"></p>
 
 ## 主要结论
 

@@ -34,15 +34,7 @@ written from scratch in pure Python**.
 
 ## How it works
 
-```mermaid
-flowchart LR
-    A[Webcam / video<br/>OpenCV capture] --> B[Pre-processing<br/>optional denoise /<br/>adaptive gamma]
-    B --> C[MediaPipe Hands<br/>21 landmarks, tracked<br/>across frames]
-    C --> D[Normalisation<br/>aspect ratio, wrist origin,<br/>palm-length scale]
-    D --> E[Classifier<br/>LogReg / kNN / Tree]
-    E --> F[Temporal smoothing<br/>mean of last 5 frames]
-    F --> G[Overlay<br/>letter, confidence, FPS]
-```
+<p align="center"><img src="reports/figures/pipeline.png" width="900" alt="Pipeline"></p>
 
 1. **Landmarks.** MediaPipe Hands returns 21 (x, y, z) keypoints, a 63-value vector.
    In video mode, MediaPipe runs its palm detector only when tracking is lost, which
