@@ -1,10 +1,15 @@
-# Real-time ASL Hand-Gesture Recognition (A–J)
+<h1 align="center">Real-time ASL Hand-Gesture Recognition (A–J)</h1>
 
-[![tests](https://github.com/cpg25ncu/asl-gesture-recognition/actions/workflows/ci.yml/badge.svg)](https://github.com/cpg25ncu/asl-gesture-recognition/actions/workflows/ci.yml)
-![python](https://img.shields.io/badge/python-3.11--3.12-blue)
-![license](https://img.shields.io/badge/license-MIT-green)
+<p align="center">
+  <b>English</b> &nbsp;|&nbsp; <a href="README.zh-CN.md">简体中文</a>
+</p>
 
-[中文说明](README.zh-CN.md)
+<p align="center">
+  <a href="https://github.com/cpg25ncu/asl-gesture-recognition/actions/workflows/ci.yml"><img src="https://github.com/cpg25ncu/asl-gesture-recognition/actions/workflows/ci.yml/badge.svg" alt="tests"></a>
+  <img src="https://img.shields.io/badge/python-3.11--3.12-blue" alt="python 3.11-3.12">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT license"></a>
+  <a href="https://github.com/cpg25ncu/asl-gesture-recognition/releases/latest"><img src="https://img.shields.io/github/v/release/cpg25ncu/asl-gesture-recognition" alt="latest release"></a>
+</p>
 
 Recognises the American Sign Language letters **A–J** from a webcam in real time.
 MediaPipe tracks 21 hand landmarks per frame. The landmark geometry is then
