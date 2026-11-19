@@ -1,157 +1,157 @@
 condition,model,feature_set,detection_rate,accuracy,accuracy_if_detected
-clean,Decision Tree,norm,1.0,0.9417,0.9417
-clean,Decision Tree,norm_aug,1.0,0.9251,0.9251
-clean,Decision Tree,norm_rot,1.0,0.8881,0.8881
-clean,Decision Tree,raw,1.0,0.8982,0.8982
-clean,kNN (from scratch),norm,1.0,0.9574,0.9574
-clean,kNN (from scratch),norm_aug,1.0,0.9537,0.9537
-clean,kNN (from scratch),norm_rot,1.0,0.9186,0.9186
-clean,kNN (from scratch),raw,1.0,0.95,0.95
-clean,Logistic Regression,norm,1.0,0.9695,0.9695
-clean,Logistic Regression,norm_aug,1.0,0.9639,0.9639
-clean,Logistic Regression,norm_rot,1.0,0.9214,0.9214
-clean,Logistic Regression,raw,1.0,0.963,0.963
-complex background,Decision Tree,norm,0.8945,0.8233,0.9204
-complex background,Decision Tree,norm_aug,0.8945,0.8131,0.909
-complex background,Decision Tree,norm_rot,0.8945,0.7706,0.8614
-complex background,Decision Tree,raw,0.8945,0.7826,0.8749
-complex background,kNN (from scratch),norm,0.8945,0.84,0.939
-complex background,kNN (from scratch),norm_aug,0.8945,0.8363,0.9349
-complex background,kNN (from scratch),norm_rot,0.8945,0.803,0.8976
-complex background,kNN (from scratch),raw,0.8945,0.8335,0.9317
-complex background,Logistic Regression,norm,0.8945,0.8511,0.9514
-complex background,Logistic Regression,norm_aug,0.8945,0.8501,0.9504
-complex background,Logistic Regression,norm_rot,0.8945,0.8094,0.9049
-complex background,Logistic Regression,raw,0.8945,0.852,0.9524
-low light,Decision Tree,norm,0.4857,0.4422,0.9105
-low light,Decision Tree,norm_aug,0.4857,0.4255,0.8762
-low light,Decision Tree,norm_rot,0.4857,0.4061,0.8362
-low light,Decision Tree,raw,0.4857,0.4117,0.8476
-low light,kNN (from scratch),norm,0.4857,0.4422,0.9105
-low light,kNN (from scratch),norm_aug,0.4857,0.4422,0.9105
-low light,kNN (from scratch),norm_rot,0.4857,0.4246,0.8743
-low light,kNN (from scratch),raw,0.4857,0.445,0.9162
-low light,Logistic Regression,norm,0.4857,0.445,0.9162
-low light,Logistic Regression,norm_aug,0.4857,0.4413,0.9086
-low light,Logistic Regression,norm_rot,0.4857,0.4255,0.8762
-low light,Logistic Regression,raw,0.4857,0.4431,0.9124
-blur,Decision Tree,norm,0.9704,0.9001,0.9276
-blur,Decision Tree,norm_aug,0.9704,0.8955,0.9228
-blur,Decision Tree,norm_rot,0.9704,0.8344,0.8599
-blur,Decision Tree,raw,0.9704,0.8585,0.8847
-blur,kNN (from scratch),norm,0.9704,0.9121,0.9399
-blur,kNN (from scratch),norm_aug,0.9704,0.9232,0.9514
-blur,kNN (from scratch),norm_rot,0.9704,0.8742,0.9009
-blur,kNN (from scratch),raw,0.9704,0.9177,0.9457
-blur,Logistic Regression,norm,0.9704,0.9315,0.96
-blur,Logistic Regression,norm_aug,0.9704,0.9325,0.9609
-blur,Logistic Regression,norm_rot,0.9704,0.8871,0.9142
-blur,Logistic Regression,raw,0.9704,0.926,0.9542
-sensor noise,Decision Tree,norm,0.049,0.0398,0.8113
-sensor noise,Decision Tree,norm_aug,0.049,0.0398,0.8113
-sensor noise,Decision Tree,norm_rot,0.049,0.037,0.7547
-sensor noise,Decision Tree,raw,0.049,0.0342,0.6981
-sensor noise,kNN (from scratch),norm,0.049,0.0398,0.8113
-sensor noise,kNN (from scratch),norm_aug,0.049,0.0389,0.7925
-sensor noise,kNN (from scratch),norm_rot,0.049,0.0379,0.7736
-sensor noise,kNN (from scratch),raw,0.049,0.0389,0.7925
-sensor noise,Logistic Regression,norm,0.049,0.0416,0.8491
-sensor noise,Logistic Regression,norm_aug,0.049,0.0398,0.8113
-sensor noise,Logistic Regression,norm_rot,0.049,0.0398,0.8113
-sensor noise,Logistic Regression,raw,0.049,0.0398,0.8113
-rotation ±30°,Decision Tree,norm,0.9907,0.7447,0.7516
-rotation ±30°,Decision Tree,norm_aug,0.9907,0.8696,0.8777
-rotation ±30°,Decision Tree,norm_rot,0.9907,0.8742,0.8824
-rotation ±30°,Decision Tree,raw,0.9907,0.7928,0.8002
-rotation ±30°,kNN (from scratch),norm,0.9907,0.7919,0.7993
-rotation ±30°,kNN (from scratch),norm_aug,0.9907,0.9001,0.9085
-rotation ±30°,kNN (from scratch),norm_rot,0.9907,0.9038,0.9122
-rotation ±30°,kNN (from scratch),raw,0.9907,0.8779,0.8861
-rotation ±30°,Logistic Regression,norm,0.9907,0.8723,0.8805
-rotation ±30°,Logistic Regression,norm_aug,0.9907,0.9093,0.9178
-rotation ±30°,Logistic Regression,norm_rot,0.9907,0.9093,0.9178
-rotation ±30°,Logistic Regression,raw,0.9907,0.8945,0.9029
-shift & scale,Decision Tree,norm,0.9769,0.926,0.9479
-shift & scale,Decision Tree,norm_aug,0.9769,0.913,0.9347
-shift & scale,Decision Tree,norm_rot,0.9769,0.8677,0.8883
-shift & scale,Decision Tree,raw,0.9769,0.5356,0.5483
-shift & scale,kNN (from scratch),norm,0.9769,0.9352,0.9574
-shift & scale,kNN (from scratch),norm_aug,0.9769,0.9399,0.9621
-shift & scale,kNN (from scratch),norm_rot,0.9769,0.9029,0.9242
-shift & scale,kNN (from scratch),raw,0.9769,0.7058,0.7225
-shift & scale,Logistic Regression,norm,0.9769,0.95,0.9725
-shift & scale,Logistic Regression,norm_aug,0.9769,0.9491,0.9716
-shift & scale,Logistic Regression,norm_rot,0.9769,0.9093,0.9309
-shift & scale,Logistic Regression,raw,0.9769,0.9149,0.9366
-webcam-like (combined),Decision Tree,norm,0.8455,0.7493,0.8862
-webcam-like (combined),Decision Tree,norm_aug,0.8455,0.7604,0.8993
-webcam-like (combined),Decision Tree,norm_rot,0.8455,0.7216,0.8534
-webcam-like (combined),Decision Tree,raw,0.8455,0.5347,0.6324
-webcam-like (combined),kNN (from scratch),norm,0.8455,0.7641,0.9037
-webcam-like (combined),kNN (from scratch),norm_aug,0.8455,0.7798,0.9223
-webcam-like (combined),kNN (from scratch),norm_rot,0.8455,0.7567,0.895
-webcam-like (combined),kNN (from scratch),raw,0.8455,0.6846,0.8096
-webcam-like (combined),Logistic Regression,norm,0.8455,0.7826,0.9256
-webcam-like (combined),Logistic Regression,norm_aug,0.8455,0.7919,0.9365
-webcam-like (combined),Logistic Regression,norm_rot,0.8455,0.766,0.9059
-webcam-like (combined),Logistic Regression,raw,0.8455,0.766,0.9059
-low light + CLAHE,Decision Tree,norm,0.3182,0.2849,0.8953
-low light + CLAHE,Decision Tree,norm_aug,0.3182,0.2803,0.8808
-low light + CLAHE,Decision Tree,norm_rot,0.3182,0.2655,0.8343
-low light + CLAHE,Decision Tree,raw,0.3182,0.2646,0.8314
-low light + CLAHE,kNN (from scratch),norm,0.3182,0.2905,0.9128
-low light + CLAHE,kNN (from scratch),norm_aug,0.3182,0.2849,0.8953
-low light + CLAHE,kNN (from scratch),norm_rot,0.3182,0.2701,0.8488
-low light + CLAHE,kNN (from scratch),raw,0.3182,0.2914,0.9157
-low light + CLAHE,Logistic Regression,norm,0.3182,0.2914,0.9157
-low light + CLAHE,Logistic Regression,norm_aug,0.3182,0.2932,0.9215
-low light + CLAHE,Logistic Regression,norm_rot,0.3182,0.2803,0.8808
-low light + CLAHE,Logistic Regression,raw,0.3182,0.2905,0.9128
-low light + auto-gamma,Decision Tree,norm,0.9288,0.877,0.9442
-low light + auto-gamma,Decision Tree,norm_aug,0.9288,0.8594,0.9253
-low light + auto-gamma,Decision Tree,norm_rot,0.9288,0.8205,0.8835
-low light + auto-gamma,Decision Tree,raw,0.9288,0.8242,0.8875
-low light + auto-gamma,kNN (from scratch),norm,0.9288,0.8797,0.9472
-low light + auto-gamma,kNN (from scratch),norm_aug,0.9288,0.8844,0.9522
-low light + auto-gamma,kNN (from scratch),norm_rot,0.9288,0.8603,0.9263
-low light + auto-gamma,kNN (from scratch),raw,0.9288,0.8844,0.9522
-low light + auto-gamma,Logistic Regression,norm,0.9288,0.8945,0.9631
-low light + auto-gamma,Logistic Regression,norm_aug,0.9288,0.8853,0.9532
-low light + auto-gamma,Logistic Regression,norm_rot,0.9288,0.8538,0.9193
-low light + auto-gamma,Logistic Regression,raw,0.9288,0.8881,0.9562
-sensor noise + denoise,Decision Tree,norm,0.9019,0.8464,0.9385
-sensor noise + denoise,Decision Tree,norm_aug,0.9019,0.8335,0.9241
-sensor noise + denoise,Decision Tree,norm_rot,0.9019,0.7872,0.8728
-sensor noise + denoise,Decision Tree,raw,0.9019,0.7946,0.881
-sensor noise + denoise,kNN (from scratch),norm,0.9019,0.8548,0.9477
-sensor noise + denoise,kNN (from scratch),norm_aug,0.9019,0.8585,0.9518
-sensor noise + denoise,kNN (from scratch),norm_rot,0.9019,0.8187,0.9077
-sensor noise + denoise,kNN (from scratch),raw,0.9019,0.8529,0.9456
-sensor noise + denoise,Logistic Regression,norm,0.9019,0.8659,0.96
-sensor noise + denoise,Logistic Regression,norm_aug,0.9019,0.8603,0.9538
-sensor noise + denoise,Logistic Regression,norm_rot,0.9019,0.8261,0.9159
-sensor noise + denoise,Logistic Regression,raw,0.9019,0.8649,0.959
-clean + auto-gamma,Decision Tree,norm,1.0,0.9417,0.9417
-clean + auto-gamma,Decision Tree,norm_aug,1.0,0.9241,0.9241
-clean + auto-gamma,Decision Tree,norm_rot,1.0,0.8881,0.8881
-clean + auto-gamma,Decision Tree,raw,1.0,0.8992,0.8992
-clean + auto-gamma,kNN (from scratch),norm,1.0,0.9574,0.9574
-clean + auto-gamma,kNN (from scratch),norm_aug,1.0,0.9537,0.9537
-clean + auto-gamma,kNN (from scratch),norm_rot,1.0,0.9195,0.9195
-clean + auto-gamma,kNN (from scratch),raw,1.0,0.95,0.95
-clean + auto-gamma,Logistic Regression,norm,1.0,0.9695,0.9695
-clean + auto-gamma,Logistic Regression,norm_aug,1.0,0.963,0.963
-clean + auto-gamma,Logistic Regression,norm_rot,1.0,0.9214,0.9214
-clean + auto-gamma,Logistic Regression,raw,1.0,0.963,0.963
-clean + denoise,Decision Tree,norm,0.9917,0.9251,0.9328
-clean + denoise,Decision Tree,norm_aug,0.9917,0.9186,0.9263
-clean + denoise,Decision Tree,norm_rot,0.9917,0.8631,0.8703
-clean + denoise,Decision Tree,raw,0.9917,0.8871,0.8946
-clean + denoise,kNN (from scratch),norm,0.9917,0.95,0.958
-clean + denoise,kNN (from scratch),norm_aug,0.9917,0.9528,0.9608
-clean + denoise,kNN (from scratch),norm_rot,0.9917,0.9084,0.916
-clean + denoise,kNN (from scratch),raw,0.9917,0.9436,0.9515
-clean + denoise,Logistic Regression,norm,0.9917,0.9593,0.9674
-clean + denoise,Logistic Regression,norm_aug,0.9917,0.9491,0.9571
-clean + denoise,Logistic Regression,norm_rot,0.9917,0.9121,0.9198
-clean + denoise,Logistic Regression,raw,0.9917,0.9565,0.9646
+clean,Decision Tree,norm,0.9678,0.9114,0.9417
+clean,Decision Tree,norm_aug,0.9678,0.8953,0.9251
+clean,Decision Tree,norm_rot,0.9678,0.8594,0.8881
+clean,Decision Tree,raw,0.9678,0.8693,0.8982
+clean,kNN (from scratch),norm,0.9678,0.9266,0.9574
+clean,kNN (from scratch),norm_aug,0.9678,0.923,0.9537
+clean,kNN (from scratch),norm_rot,0.9678,0.889,0.9186
+clean,kNN (from scratch),raw,0.9678,0.9194,0.95
+clean,Logistic Regression,norm,0.9678,0.9382,0.9695
+clean,Logistic Regression,norm_aug,0.9678,0.9329,0.9639
+clean,Logistic Regression,norm_rot,0.9678,0.8917,0.9214
+clean,Logistic Regression,raw,0.9678,0.932,0.963
+complex background,Decision Tree,norm,0.8657,0.7968,0.9204
+complex background,Decision Tree,norm_aug,0.8657,0.7869,0.909
+complex background,Decision Tree,norm_rot,0.8657,0.7457,0.8614
+complex background,Decision Tree,raw,0.8657,0.7574,0.8749
+complex background,kNN (from scratch),norm,0.8657,0.8129,0.939
+complex background,kNN (from scratch),norm_aug,0.8657,0.8093,0.9349
+complex background,kNN (from scratch),norm_rot,0.8657,0.7771,0.8976
+complex background,kNN (from scratch),raw,0.8657,0.8066,0.9317
+complex background,Logistic Regression,norm,0.8657,0.8236,0.9514
+complex background,Logistic Regression,norm_aug,0.8657,0.8227,0.9504
+complex background,Logistic Regression,norm_rot,0.8657,0.7833,0.9049
+complex background,Logistic Regression,raw,0.8657,0.8245,0.9524
+low light,Decision Tree,norm,0.4727,0.4288,0.9072
+low light,Decision Tree,norm_aug,0.4727,0.4127,0.8731
+low light,Decision Tree,norm_rot,0.4727,0.3939,0.8333
+low light,Decision Tree,raw,0.4727,0.3984,0.8428
+low light,kNN (from scratch),norm,0.4727,0.4297,0.9091
+low light,kNN (from scratch),norm_aug,0.4727,0.4288,0.9072
+low light,kNN (from scratch),norm_rot,0.4727,0.4118,0.8712
+low light,kNN (from scratch),raw,0.4727,0.4315,0.9129
+low light,Logistic Regression,norm,0.4727,0.4315,0.9129
+low light,Logistic Regression,norm_aug,0.4727,0.4279,0.9053
+low light,Logistic Regression,norm_rot,0.4727,0.4136,0.875
+low light,Logistic Regression,raw,0.4727,0.4306,0.911
+blur,Decision Tree,norm,0.9508,0.88,0.9256
+blur,Decision Tree,norm_aug,0.9508,0.8765,0.9218
+blur,Decision Tree,norm_rot,0.9508,0.8174,0.8597
+blur,Decision Tree,raw,0.9508,0.8397,0.8832
+blur,kNN (from scratch),norm,0.9508,0.8935,0.9397
+blur,kNN (from scratch),norm_aug,0.9508,0.9042,0.951
+blur,kNN (from scratch),norm_rot,0.9508,0.8559,0.9002
+blur,kNN (from scratch),raw,0.9508,0.8979,0.9444
+blur,Logistic Regression,norm,0.9508,0.9132,0.9605
+blur,Logistic Regression,norm_aug,0.9508,0.9132,0.9605
+blur,Logistic Regression,norm_rot,0.9508,0.8693,0.9143
+blur,Logistic Regression,raw,0.9508,0.9069,0.9539
+sensor noise,Decision Tree,norm,0.0474,0.0385,0.8113
+sensor noise,Decision Tree,norm_aug,0.0474,0.0385,0.8113
+sensor noise,Decision Tree,norm_rot,0.0474,0.0358,0.7547
+sensor noise,Decision Tree,raw,0.0474,0.0331,0.6981
+sensor noise,kNN (from scratch),norm,0.0474,0.0385,0.8113
+sensor noise,kNN (from scratch),norm_aug,0.0474,0.0376,0.7925
+sensor noise,kNN (from scratch),norm_rot,0.0474,0.0367,0.7736
+sensor noise,kNN (from scratch),raw,0.0474,0.0376,0.7925
+sensor noise,Logistic Regression,norm,0.0474,0.0403,0.8491
+sensor noise,Logistic Regression,norm_aug,0.0474,0.0385,0.8113
+sensor noise,Logistic Regression,norm_rot,0.0474,0.0385,0.8113
+sensor noise,Logistic Regression,raw,0.0474,0.0385,0.8113
+rotation ±30°,Decision Tree,norm,0.9651,0.7225,0.7486
+rotation ±30°,Decision Tree,norm_aug,0.9651,0.8469,0.8776
+rotation ±30°,Decision Tree,norm_rot,0.9651,0.8505,0.8813
+rotation ±30°,Decision Tree,raw,0.9651,0.7708,0.7987
+rotation ±30°,kNN (from scratch),norm,0.9651,0.7717,0.7996
+rotation ±30°,kNN (from scratch),norm_aug,0.9651,0.8774,0.9091
+rotation ±30°,kNN (from scratch),norm_rot,0.9651,0.88,0.9119
+rotation ±30°,kNN (from scratch),raw,0.9651,0.855,0.8859
+rotation ±30°,Logistic Regression,norm,0.9651,0.8496,0.8803
+rotation ±30°,Logistic Regression,norm_aug,0.9651,0.8854,0.9174
+rotation ±30°,Logistic Regression,norm_rot,0.9651,0.8854,0.9174
+rotation ±30°,Logistic Regression,raw,0.9651,0.8702,0.9017
+shift & scale,Decision Tree,norm,0.9454,0.8962,0.9479
+shift & scale,Decision Tree,norm_aug,0.9454,0.8836,0.9347
+shift & scale,Decision Tree,norm_rot,0.9454,0.8397,0.8883
+shift & scale,Decision Tree,raw,0.9454,0.5184,0.5483
+shift & scale,kNN (from scratch),norm,0.9454,0.9051,0.9574
+shift & scale,kNN (from scratch),norm_aug,0.9454,0.9096,0.9621
+shift & scale,kNN (from scratch),norm_rot,0.9454,0.8738,0.9242
+shift & scale,kNN (from scratch),raw,0.9454,0.6831,0.7225
+shift & scale,Logistic Regression,norm,0.9454,0.9194,0.9725
+shift & scale,Logistic Regression,norm_aug,0.9454,0.9185,0.9716
+shift & scale,Logistic Regression,norm_rot,0.9454,0.88,0.9309
+shift & scale,Logistic Regression,raw,0.9454,0.8854,0.9366
+webcam-like (combined),Decision Tree,norm,0.8183,0.7252,0.8862
+webcam-like (combined),Decision Tree,norm_aug,0.8183,0.7359,0.8993
+webcam-like (combined),Decision Tree,norm_rot,0.8183,0.6983,0.8534
+webcam-like (combined),Decision Tree,raw,0.8183,0.5175,0.6324
+webcam-like (combined),kNN (from scratch),norm,0.8183,0.7395,0.9037
+webcam-like (combined),kNN (from scratch),norm_aug,0.8183,0.7547,0.9223
+webcam-like (combined),kNN (from scratch),norm_rot,0.8183,0.7323,0.895
+webcam-like (combined),kNN (from scratch),raw,0.8183,0.6625,0.8096
+webcam-like (combined),Logistic Regression,norm,0.8183,0.7574,0.9256
+webcam-like (combined),Logistic Regression,norm_aug,0.8183,0.7663,0.9365
+webcam-like (combined),Logistic Regression,norm_rot,0.8183,0.7413,0.9059
+webcam-like (combined),Logistic Regression,raw,0.8183,0.7413,0.9059
+low light + CLAHE,Decision Tree,norm,0.308,0.2757,0.8953
+low light + CLAHE,Decision Tree,norm_aug,0.308,0.2713,0.8808
+low light + CLAHE,Decision Tree,norm_rot,0.308,0.2569,0.8343
+low light + CLAHE,Decision Tree,raw,0.308,0.256,0.8314
+low light + CLAHE,kNN (from scratch),norm,0.308,0.2811,0.9128
+low light + CLAHE,kNN (from scratch),norm_aug,0.308,0.2757,0.8953
+low light + CLAHE,kNN (from scratch),norm_rot,0.308,0.2614,0.8488
+low light + CLAHE,kNN (from scratch),raw,0.308,0.282,0.9157
+low light + CLAHE,Logistic Regression,norm,0.308,0.282,0.9157
+low light + CLAHE,Logistic Regression,norm_aug,0.308,0.2838,0.9215
+low light + CLAHE,Logistic Regression,norm_rot,0.308,0.2713,0.8808
+low light + CLAHE,Logistic Regression,raw,0.308,0.2811,0.9128
+low light + auto-gamma,Decision Tree,norm,0.9051,0.8532,0.9426
+low light + auto-gamma,Decision Tree,norm_aug,0.9051,0.8344,0.9219
+low light + auto-gamma,Decision Tree,norm_rot,0.9051,0.7977,0.8813
+low light + auto-gamma,Decision Tree,raw,0.9051,0.8013,0.8853
+low light + auto-gamma,kNN (from scratch),norm,0.9051,0.855,0.9446
+low light + auto-gamma,kNN (from scratch),norm_aug,0.9051,0.8594,0.9496
+low light + auto-gamma,kNN (from scratch),norm_rot,0.9051,0.8353,0.9228
+low light + auto-gamma,kNN (from scratch),raw,0.9051,0.8594,0.9496
+low light + auto-gamma,Logistic Regression,norm,0.9051,0.8702,0.9614
+low light + auto-gamma,Logistic Regression,norm_aug,0.9051,0.8612,0.9515
+low light + auto-gamma,Logistic Regression,norm_rot,0.9051,0.829,0.9159
+low light + auto-gamma,Logistic Regression,raw,0.9051,0.8639,0.9545
+sensor noise + denoise,Decision Tree,norm,0.8774,0.8218,0.9367
+sensor noise + denoise,Decision Tree,norm_aug,0.8774,0.8093,0.9224
+sensor noise + denoise,Decision Tree,norm_rot,0.8774,0.7637,0.8704
+sensor noise + denoise,Decision Tree,raw,0.8774,0.7699,0.8776
+sensor noise + denoise,kNN (from scratch),norm,0.8774,0.8317,0.948
+sensor noise + denoise,kNN (from scratch),norm_aug,0.8774,0.8344,0.951
+sensor noise + denoise,kNN (from scratch),norm_rot,0.8774,0.795,0.9061
+sensor noise + denoise,kNN (from scratch),raw,0.8774,0.829,0.9449
+sensor noise + denoise,Logistic Regression,norm,0.8774,0.8397,0.9571
+sensor noise + denoise,Logistic Regression,norm_aug,0.8774,0.8362,0.9531
+sensor noise + denoise,Logistic Regression,norm_rot,0.8774,0.8021,0.9143
+sensor noise + denoise,Logistic Regression,raw,0.8774,0.8406,0.9582
+clean + auto-gamma,Decision Tree,norm,0.9687,0.9123,0.9418
+clean + auto-gamma,Decision Tree,norm_aug,0.9687,0.8953,0.9242
+clean + auto-gamma,Decision Tree,norm_rot,0.9687,0.8603,0.8882
+clean + auto-gamma,Decision Tree,raw,0.9687,0.8711,0.8993
+clean + auto-gamma,kNN (from scratch),norm,0.9687,0.9275,0.9575
+clean + auto-gamma,kNN (from scratch),norm_aug,0.9687,0.9239,0.9538
+clean + auto-gamma,kNN (from scratch),norm_rot,0.9687,0.8908,0.9196
+clean + auto-gamma,kNN (from scratch),raw,0.9687,0.9203,0.9501
+clean + auto-gamma,Logistic Regression,norm,0.9687,0.9391,0.9695
+clean + auto-gamma,Logistic Regression,norm_aug,0.9687,0.9329,0.963
+clean + auto-gamma,Logistic Regression,norm_rot,0.9687,0.8926,0.9214
+clean + auto-gamma,Logistic Regression,raw,0.9687,0.9329,0.963
+clean + denoise,Decision Tree,norm,0.9696,0.9024,0.9307
+clean + denoise,Decision Tree,norm_aug,0.9696,0.8962,0.9243
+clean + denoise,Decision Tree,norm_rot,0.9696,0.8433,0.8698
+clean + denoise,Decision Tree,raw,0.9696,0.8657,0.8929
+clean + denoise,kNN (from scratch),norm,0.9696,0.9275,0.9566
+clean + denoise,kNN (from scratch),norm_aug,0.9696,0.9302,0.9594
+clean + denoise,kNN (from scratch),norm_rot,0.9696,0.8863,0.9141
+clean + denoise,kNN (from scratch),raw,0.9696,0.9203,0.9492
+clean + denoise,Logistic Regression,norm,0.9696,0.9364,0.9658
+clean + denoise,Logistic Regression,norm_aug,0.9696,0.9266,0.9557
+clean + denoise,Logistic Regression,norm_rot,0.9696,0.8908,0.9187
+clean + denoise,Logistic Regression,raw,0.9696,0.9338,0.9631

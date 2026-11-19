@@ -114,13 +114,19 @@ def heatmap(ax, matrix: np.ndarray, row_labels, col_labels, fmt: str = "{:d}",
                 ax.text(j, i, fmt.format(v), ha="center", va="center", fontsize=7.5, color=ink)
 
 
-def confusion(ax, cm: np.ndarray, labels: Sequence[str], title: str) -> None:
-    """Confusion matrix: colour = row-normalised recall, text = raw counts."""
+def confusion(ax, cm: np.ndarray, labels: Sequence[str], title: str,
+              col_labels: Sequence[str] | None = None) -> None:
+    """Confusion matrix: colour = row-normalised rate, text = raw counts.
+
+    ``col_labels`` allows extra outcome columns (e.g. "no hand detected")."""
     cm = np.asarray(cm)
+    col_labels = list(col_labels or labels)
     rates = cm / np.maximum(cm.sum(axis=1, keepdims=True), 1)
     ax.imshow(rates, cmap=SEQ_CMAP, vmin=0, vmax=1)
-    ax.set_xticks(range(len(labels)), labels)
+    ax.set_xticks(range(len(col_labels)), col_labels)
     ax.set_yticks(range(len(labels)), labels)
+    if len(col_labels) > len(labels):
+        ax.axvline(len(labels) - 0.5, color=TEXT_2, linewidth=1)
     ax.set_xlabel("Predicted")
     ax.set_ylabel("True")
     ax.grid(False)

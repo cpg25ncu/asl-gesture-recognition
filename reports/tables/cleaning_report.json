@@ -4,5 +4,9 @@
   "after_dedup_id": 3661,
   "after_dedup_landmarks": 3602,
   "train": 2521,
-  "test": 1081
+  "test": 1081,
+  "undetected_unique": 119,
+  "undetected_train": 83,
+  "undetected_test": 36,
+  "test_all_images": 1117
 }

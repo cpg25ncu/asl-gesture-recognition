@@ -24,7 +24,7 @@ import pandas as pd
 
 from . import config, features, viz
 from .landmarks import COORD_COLUMNS, HandLandmarker, imread
-from .supervised import MODELS, load_dataset
+from .supervised import MODELS, load_dataset, undetected_split
 
 HAND_CONNECTIONS = [
     (0, 1), (1, 2), (2, 3), (3, 4), (0, 5), (5, 6), (6, 7), (7, 8), (5, 9), (9, 10), (10, 11),
@@ -275,6 +275,41 @@ def extract_condition(name: str, test: pd.DataFrame, preprocess: str | None = No
     return out
 
 
+# Conditions that cut the hand out of the photo first need its landmarks from the
+# original image, so they cannot be generated for images where MediaPipe never
+# found a hand; those images are counted as failures for these conditions.
+NEEDS_LANDMARKS = {"complex background", "shift & scale", "webcam-like (combined)"}
+
+
+def extract_condition_undetected(name: str, undetected: pd.DataFrame, preprocess: str | None = None,
+                                 force: bool = False) -> pd.DataFrame:
+    """Same as ``extract_condition`` for the test images with no hand detected in the original photo."""
+    tag = _slug(name) + (f"__{_slug(preprocess)}" if preprocess else "") + "__undetected"
+    path = config.ROBUSTNESS_CACHE / f"{tag}.csv"
+    if path.exists() and not force:
+        return pd.read_csv(path)
+    rows = []
+    if name in NEEDS_LANDMARKS:
+        rows = [[r.instance_id, r.label, False, *([np.nan] * 63)] for r in undetected.itertuples(index=False)]
+    else:
+        pre = PREPROCESSING[preprocess] if preprocess else None
+        bank = BackgroundBank(seed=config.SEED)
+        with HandLandmarker(static_image_mode=True) as det:
+            for i, r in enumerate(undetected.itertuples(index=False)):
+                ctx = Context(rng=np.random.default_rng([config.SEED, 100_000 + i]),
+                              landmarks=np.zeros((21, 3)), bank=bank)
+                img = CONDITIONS[name](imread(config.RAW_DIR / r.instance_id), ctx)
+                if pre is not None:
+                    img = pre(img)
+                d = det.detect(img)
+                coords = d.landmarks.reshape(-1).tolist() if d is not None else [np.nan] * 63
+                rows.append([r.instance_id, r.label, d is not None, *coords])
+    out = pd.DataFrame(rows, columns=["instance_id", "label", "detected", *COORD_COLUMNS])
+    config.ROBUSTNESS_CACHE.mkdir(parents=True, exist_ok=True)
+    out.to_csv(path, index=False)
+    return out
+
+
 def _load_final_models() -> dict[tuple[str, str], object]:
     store = config.PROCESSED_DIR / "models"
     return {(b["key"], b["feature_set"]): b["model"]
@@ -285,15 +320,20 @@ def run(conditions=tuple(CONDITIONS), preprocessed_runs=PREPROCESSED_RUNS) -> pd
     config.ensure_dirs()
     df, _ = load_dataset()
     test = df[df["split"] == "test"].reset_index(drop=True)
+    und = undetected_split()
+    und_test = und[und["split"] == "test"].reset_index(drop=True)
     models = _load_final_models()
     if not models:
         raise FileNotFoundError("No trained models found - run `asl-gesture train` first.")
 
+    # Every metric is over ALL test images: the 1,081 with a hand detected in the
+    # original photo plus the ones MediaPipe missed even there.
     runs = [(c, None) for c in conditions] + list(preprocessed_runs)
     rows = []
     for cond, pre in runs:
         label = cond + (f" + {pre}" if pre else "")
-        data = extract_condition(cond, test, preprocess=pre)
+        data = pd.concat([extract_condition(cond, test, preprocess=pre),
+                          extract_condition_undetected(cond, und_test, preprocess=pre)], ignore_index=True)
         detected = data["detected"].to_numpy(bool)
         lm = data[COORD_COLUMNS].to_numpy(np.float64).reshape(-1, 21, 3)
         y = data["label"].to_numpy()
@@ -331,7 +371,7 @@ def plot(res: pd.DataFrame, model_name: str | None = None) -> None:
                      value_fmt="{:.0f}")
     ax.set_ylim(0, 105)
     ax.set_ylabel("End-to-end accuracy (%)")
-    ax.set_title(f"Robustness of {model_name} under unseen capture conditions (held-out test images)")
+    ax.set_title(f"Robustness of {model_name}: end-to-end accuracy on all held-out test images")
     ax.legend(title="feature set", loc="upper left", bbox_to_anchor=(1.0, 1.0))
     ax.tick_params(axis="x", labelsize=8.5)
     fig.tight_layout()

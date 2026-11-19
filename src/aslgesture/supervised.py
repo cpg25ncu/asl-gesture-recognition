@@ -116,6 +116,44 @@ def get_split(df: pd.DataFrame) -> pd.DataFrame:
     return df.merge(split, on="instance_id")
 
 
+def undetected_split() -> pd.DataFrame:
+    """Train/test assignment for the images on which MediaPipe found no hand.
+
+    These images never reach a classifier, so assigning them after the fact does
+    not change any trained model. They are split with the same ratio, stratified
+    by letter and with the same seed, so that the test set represents *every*
+    image and end-to-end (full-system) accuracy can be reported. Byte-identical
+    duplicates are removed, consistent with the cleaning of detected images.
+    """
+    path = config.PROCESSED_DIR / "split_undetected.csv"
+    if path.exists():
+        return pd.read_csv(path)
+    import hashlib
+
+    ids, seen = [], set()
+    for line in config.FAILURES_TXT.read_text(encoding="utf-8").splitlines():
+        rel = line.strip()
+        if not rel:
+            continue
+        digest = hashlib.md5((config.RAW_DIR / rel).read_bytes()).hexdigest()
+        if digest not in seen:
+            seen.add(digest)
+            ids.append(rel)
+    labels = [rel.split("/")[0] for rel in ids]
+    _, test_ids = train_test_split(ids, test_size=config.TEST_SIZE, stratify=labels, random_state=config.SEED)
+    test_ids = set(test_ids)
+    out = pd.DataFrame({"instance_id": ids, "label": labels,
+                        "split": ["test" if i in test_ids else "train" for i in ids]})
+    out.to_csv(path, index=False)
+    return out
+
+
+def end_to_end_accuracy(y_true, y_pred, n_undetected: int) -> float:
+    """Accuracy over all test images: images without a detected hand count as errors."""
+    correct = int(np.sum(np.asarray(y_true) == np.asarray(y_pred)))
+    return correct / (len(y_true) + n_undetected)
+
+
 def landmark_array(df: pd.DataFrame) -> np.ndarray:
     return df[COORD_COLUMNS].to_numpy(dtype=np.float64).reshape(-1, config.N_LANDMARKS, 3)
 
@@ -339,21 +377,26 @@ def plot_feature_set_comparison(summary: pd.DataFrame) -> None:
     viz.grouped_bars(ax, models, series, value_fmt="{:.1f}")
     lo = min(min(v) for v in series.values())
     ax.set_ylim(max(0, np.floor(lo / 5) * 5 - 5), 100)
-    ax.set_ylabel("Test accuracy (%)")
-    ax.set_title("Test accuracy by model and feature set")
+    ax.set_ylabel("Classification accuracy (%)")
+    ax.set_title("Test accuracy on images with a detected hand, by model and feature set", fontsize=11)
     ax.legend(title="feature set", loc="upper left", bbox_to_anchor=(1.0, 1.0))
     fig.tight_layout()
     viz.save(fig, config.FIG_DIR / "feature_set_comparison.png")
 
 
-def plot_confusion(result: FinalResult, y_te: np.ndarray) -> None:
+def plot_confusion(key: str, feature_set: str, y_te, y_pred, undetected_labels=()) -> None:
+    """Full-system confusion matrix: test images MediaPipe missed appear in a "no hand" column."""
     viz.setup()
-    cm = confusion_matrix(y_te, result.y_pred, labels=config.LABELS)
-    fig, ax = viz.plt.subplots(figsize=(5.2, 4.6))
-    viz.confusion(ax, cm, config.LABELS,
-                  f"{MODELS[result.key].name} | {result.feature_set} | test acc {result.test_acc:.1%}")
+    cm = confusion_matrix(y_te, y_pred, labels=config.LABELS)
+    missed = pd.Series(list(undetected_labels), dtype=object).value_counts().reindex(config.LABELS, fill_value=0)
+    cm = np.column_stack([cm, missed.to_numpy()])
+    cls_acc = float(np.mean(np.asarray(y_te) == np.asarray(y_pred)))
+    e2e = end_to_end_accuracy(y_te, y_pred, len(undetected_labels))
+    fig, ax = viz.plt.subplots(figsize=(5.8, 4.9))
+    viz.confusion(ax, cm, config.LABELS, f"{MODELS[key].name} | {feature_set}\n"
+                  f"classification {cls_acc:.1%}  ·  end-to-end {e2e:.1%}", col_labels=[*config.LABELS, "no\nhand"])
     fig.tight_layout()
-    viz.save(fig, config.FIG_DIR / f"confusion_{result.key}_{result.feature_set}.png")
+    viz.save(fig, config.FIG_DIR / f"confusion_{key}_{feature_set}.png")
 
 
 def plot_class_distribution(df_all: pd.DataFrame, n_images_per_class: dict[str, int]) -> None:
@@ -380,10 +423,15 @@ def run(feature_sets=features.FEATURE_SETS, model_keys=tuple(MODELS)) -> pd.Data
     df, clean_report = load_dataset()
     train, test = df[df["split"] == "train"], df[df["split"] == "test"]
     y_tr, y_te = train["label"].to_numpy(), test["label"].to_numpy()
+    und = undetected_split()
+    und_test = und[und["split"] == "test"]["label"].tolist()
     print(f"Cleaning: {clean_report}")
-    print(f"Split: train={len(train)}  test={len(test)}")
-    (config.TABLE_DIR / "cleaning_report.json").write_text(
-        json.dumps({**clean_report, "train": len(train), "test": len(test)}, indent=2))
+    print(f"Split: train={len(train)}  test={len(test)}  (+{len(und_test)} test images with no hand detected)")
+    (config.TABLE_DIR / "cleaning_report.json").write_text(json.dumps({
+        **clean_report, "train": len(train), "test": len(test),
+        "undetected_unique": len(und), "undetected_train": int((und["split"] == "train").sum()),
+        "undetected_test": len(und_test), "test_all_images": len(test) + len(und_test),
+    }, indent=2))
 
     from .landmarks import list_dataset_images
     counts: dict[str, int] = {}
@@ -411,10 +459,11 @@ def run(feature_sets=features.FEATURE_SETS, model_keys=tuple(MODELS)) -> pd.Data
                 "feature_set": fs, "model": MODELS[key].name, "best_params": _param_key(res.params),
                 "cv_acc_mean": round(res.cv_acc_mean, 5), "cv_acc_std": round(res.cv_acc_std, 5),
                 "train_acc": round(res.train_acc, 5), "test_acc": round(res.test_acc, 5),
+                "test_acc_end_to_end": round(end_to_end_accuracy(y_te, res.y_pred, len(und_test)), 5),
                 "test_f1_macro": round(res.test_f1, 5), "default_params_test_acc": round(res.default_test_acc, 5),
                 "predict_ms_per_sample": round(res.predict_ms, 3),
             })
-            plot_confusion(res, y_te)
+            plot_confusion(key, fs, y_te, res.y_pred, und_test)
             report = classification_report(y_te, res.y_pred, labels=config.LABELS, output_dict=True, zero_division=0)
             pd.DataFrame(report).T.to_csv(config.TABLE_DIR / f"per_class_{key}_{fs}.csv")
         if set(cvs) == set(MODELS):
