@@ -1,7 +1,7 @@
 # Real-time ASL Hand-Gesture Recognition (A–J)
 
 [![tests](https://github.com/cpg25ncu/asl-gesture-recognition/actions/workflows/ci.yml/badge.svg)](https://github.com/cpg25ncu/asl-gesture-recognition/actions/workflows/ci.yml)
-![python](https://img.shields.io/badge/python-3.9--3.12-blue)
+![python](https://img.shields.io/badge/python-3.11--3.12-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 [中文说明](README.zh-CN.md)
@@ -225,7 +225,7 @@ python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\act
 pip install -r requirements.txt && pip install -e . --no-deps
 ```
 
-Python 3.9–3.12 is required (MediaPipe 0.10.14). A trained model (8 KB) is included in [`models/`](models).
+Python 3.11 or 3.12 is required (MediaPipe 0.10.14; versions pinned in `requirements.txt`). A trained model (8 KB) is included in [`models/`](models).
 
 ```bash
 asl-gesture demo                       # webcam, press q to quit

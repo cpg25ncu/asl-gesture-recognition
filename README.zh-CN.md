@@ -60,4 +60,4 @@ asl-gesture demo                 # 打开摄像头实时识别，按 q 退出
 asl-gesture predict 图片.jpg      # 识别单张图片
 ```
 
-需要 Python 3.9–3.12。训练数据集不能公开分发，说明见 [`data/README.md`](data/README.md)。
+需要 Python 3.11 或 3.12。训练数据集不能公开分发，说明见 [`data/README.md`](data/README.md)。
