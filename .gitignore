@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+build/
+dist/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Data: the image dataset is not redistributable, and everything derived
+# from it (landmarks, splits, locally trained kNN models) stays local too.
+data/*
+!data/README.md
+
+# Large media
+*.mp4
+*.avi

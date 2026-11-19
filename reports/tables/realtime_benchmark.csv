@@ -1,0 +1,6 @@
+frames,model,feature_set,tracking,clahe,denoise,auto_gamma,processing_fps,latency_ms_mean,latency_ms_p95,preprocess_ms_mean,landmarks_ms_mean,classify_ms_mean,hand_detected_rate
+400,Logistic Regression,norm,False,False,False,False,62.2,16.07,19.76,0.0,15.32,0.7,0.983
+400,Logistic Regression,norm,True,False,False,False,128.9,7.76,9.12,0.0,7.14,0.57,0.995
+400,Logistic Regression,norm,True,False,False,True,129.2,7.74,8.71,0.38,6.77,0.54,0.995
+400,Logistic Regression,norm,True,False,True,False,113.6,8.8,9.58,1.41,6.8,0.55,0.995
+400,Logistic Regression,norm,True,False,True,True,107.8,9.28,10.05,1.79,6.87,0.56,0.995

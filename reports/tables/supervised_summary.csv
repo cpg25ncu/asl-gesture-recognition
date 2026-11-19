@@ -1,0 +1,13 @@
+feature_set,model,best_params,cv_acc_mean,cv_acc_std,train_acc,test_acc,test_f1_macro,default_params_test_acc,predict_ms_per_sample
+raw,kNN (from scratch),"k=5, weighting=distance",0.9516,0.0111,1.0,0.95005,0.94851,0.9473,1.606
+raw,Decision Tree,"max_depth=None, min_samples_split=2",0.9008,0.012,1.0,0.89824,0.89434,0.8982,0.081
+raw,Logistic Regression,"C=1.0, l1_ratio=1.0",0.9591,0.0122,0.9746,0.963,0.96182,0.9685,0.216
+norm,kNN (from scratch),"k=5, weighting=distance",0.9548,0.0054,1.0,0.95745,0.95639,0.9519,1.802
+norm,Decision Tree,"max_depth=15, min_samples_split=2",0.9326,0.0065,0.9964,0.94172,0.93993,0.938,0.08
+norm,Logistic Regression,"C=100.0, l1_ratio=0.0",0.9572,0.0092,0.9881,0.96947,0.9686,0.9611,0.212
+norm_rot,kNN (from scratch),"k=1, weighting=uniform",0.9195,0.0102,1.0,0.91859,0.91615,0.9149,1.574
+norm_rot,Decision Tree,"max_depth=15, min_samples_split=20",0.8838,0.0065,0.9564,0.88807,0.88564,0.8955,0.081
+norm_rot,Logistic Regression,"C=1.0, l1_ratio=0.0",0.9139,0.0111,0.9385,0.92137,0.9193,0.9214,0.217
+norm_aug,kNN (from scratch),"k=5, weighting=distance",0.95795,0.00759,1.0,0.95375,0.9527,0.95005,9.328
+norm_aug,Decision Tree,"max_depth=10, min_samples_split=5",0.93852,0.00436,0.96152,0.92507,0.92325,0.93432,0.109
+norm_aug,Logistic Regression,"C=1.0, l1_ratio=1.0",0.95676,0.0114,0.97739,0.96392,0.96279,0.96022,0.14

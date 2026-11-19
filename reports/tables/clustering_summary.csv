@@ -1,0 +1,5 @@
+feature_set,method,k,silhouette,purity,ARI,NMI,test_acc_majority_label,agreement_with_best_classifier
+raw,K-Means,10,0.1418,0.4659,0.284,0.4189,0.4792,0.4875
+raw,Agglomerative (Ward),10,0.1186,0.4925,0.3679,0.5187,0.4921,0.5005
+norm,K-Means,10,0.2034,0.4584,0.2984,0.4695,0.4616,0.4672
+norm,Agglomerative (Ward),10,0.1356,0.4581,0.2759,0.4523,0.4524,0.4598

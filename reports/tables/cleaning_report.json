@@ -1,0 +1,8 @@
+{
+  "rows_in": 3661,
+  "after_dropna": 3661,
+  "after_dedup_id": 3661,
+  "after_dedup_landmarks": 3602,
+  "train": 2521,
+  "test": 1081
+}

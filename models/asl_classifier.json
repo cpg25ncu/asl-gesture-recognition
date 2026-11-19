@@ -1,0 +1,21 @@
+{
+  "model_name": "Logistic Regression",
+  "key": "lr",
+  "feature_set": "norm",
+  "params": {
+    "C": 100.0,
+    "l1_ratio": 0.0
+  },
+  "labels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ]
+}
